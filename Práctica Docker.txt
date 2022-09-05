@@ -1,0 +1,43 @@
+Containers
+
+1)
+docker run ngnix
+
+2)
+docker run -d ngnix
+docker ps
+docker stop "id"
+docker rm "id"
+
+3)
+docker run --name "nombre" -d ngnix
+
+4)
+docker run --name "nombre" -d -p 90:80 ngnix
+
+5)
+docker run ngnix
+docker exec -it "id" bash
+ls
+
+6)
+vim index.html
+"i"
+<h1>Hola desde Docker!<h1>
+"Esc"
+:wq
+docker run --name "dockerIndex" -d -p 90:80 nginx
+docker cp index.html "id":/usr/share/nginx/html
+
+
+Images
+
+1)
+docker images
+
+2)
+docker rmi nginx
+
+3)
+docker run nginx
+docker rmi nginx
