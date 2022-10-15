@@ -30,6 +30,8 @@ docker run --name "dockerIndex" -d -p 90:80 nginx
 docker cp index.html "id":/usr/share/nginx/html
 
 
+------------------------------------------------------------------------------
+
 Images
 
 1)
@@ -41,3 +43,55 @@ docker rmi nginx
 3)
 docker run nginx
 docker rmi nginx
+
+------------------------------------------------------------------------------
+
+Dockerfile
+
+1)
+vim Dockerfile
+	FROM nginx
+	COPY index.html /usr/share/nginx/html
+cat Dockerfile
+FROM nginx
+COPY index.html /usr/share/nginx/html
+
+cat index.html
+V:1.
+
+docker build -t dockerfile_nginx:v1 .
+Sending build context to Docker daemon 3.072kb
+Step 1/2 : FROM nginx
+ ---> 2d389e545974
+Step 2/2 : COPY index.html /usr/share/nginx/html
+ ---> b466878fdce6
+Successfully built b466878fdce6
+Successfully tagged dockerfile_nginx:v1
+
+docker run -d -p 80:80 dockerfile_nginx:v1
+8d636e329a88ae1a6ce19f0a8f95bf336acb18bd17140347228bbc73C04c79fc
+
+2)
+vim Dockerfile
+    FROM nginx
+    COPY index.html /usr/share/nginx/html
+cat Dockerfile
+FROM nginx
+COPY index.html /usr/share/nginx/html
+
+cat index.html
+v:2
+
+docker build -t dockerfile_nginx:v2 .
+Sending build context to Docker daemon  3.072kB
+Step 1/2 : FROM nginx
+ ---> 2d389e545974
+Step 2/2 : COPY index.html /usr/share/nginx/html
+ ---> e0ff4fc56922
+Successfully built e0ff4fc56922
+Successfully tagged dockerfile_nginx:v2
+
+docker rm 8d6
+
+docker run -d -p 80:80 dockerfile_nginx:v2
+0742784bbdc09d594a7055d195a917e236adb61590e614d06ffe3add97cfaa7f
