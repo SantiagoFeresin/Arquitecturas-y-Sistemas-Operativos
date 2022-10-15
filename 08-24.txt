@@ -23,7 +23,7 @@ ls
 6)
 vim index.html
 "i"
-<h1>Hola desde Docker!<h1>
+<h1>Hola desde Docker!</h1>
 "Esc"
 :wq
 docker run --name "dockerIndex" -d -p 90:80 nginx

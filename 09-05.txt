@@ -1,0 +1,36 @@
+Containers and Images
+
+1)
+docker run -d bitnami/apache
+
+2)
+docker run -d -p 8080:8080 -p 8443:8443 bitnami/apache
+
+3)
+docker exec -it "id" bash
+cd /opt/bitnami/apache/htdocs
+cat index.html
+<html><body><h1>It works!</h1></body></html>
+
+4)
+vim index.html
+"i"
+<p>Index editado bitnami/apache </p>
+"Esc"
+:wq
+docker cp index.html "id":/opt/bitnami/apache/htdocs
+
+5)
+vim index.html
+"i"
+<h1>Index editado</h1>
+"Esc"
+:wq
+vim Dockerfile
+"i"
+    FROM bitnami/apache
+    COPY index.html /opt/bitnami/apache/htdocs
+"Esc"
+:wq
+docker build -t dockerfile_apache:v1 .
+docker run -d -p 8080:8080 -p 8443:8443 dockerfile_apache:v1
