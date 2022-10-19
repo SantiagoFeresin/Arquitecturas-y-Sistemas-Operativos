@@ -1,0 +1,76 @@
+1)
+
+vim docker-compose.yml
+"i"
+	version: '3'
+	services:
+		web:
+			image: nginx
+			container_name: nginxprueba
+			ports:"80:80"
+			restart: always
+		websql:
+			image: mysql:latest
+			container_name: mysqlprueba
+			ports:"3306:3306"
+"Esc"
+:wq
+
+
+2)
+
+vim index.html
+"i"
+	<h1>index editado</h1>
+"Esc"
+:wq
+vim Dockerfile
+"i"
+	FROM nginx
+	COPY index.html /usr/share/ngnix/html
+
+a.
+vim docker-compose.yml
+"i"
+	version: '3'
+	services:
+		Ngnix:
+			build: .
+			container_name: nginxprueba
+			ports:"80:80"
+			restart: always
+		MySQL:
+			image: mysql:latest
+			container_name: mysqlprueba
+			ports:"3306:3306"
+"Esc"
+:wq
+
+b.
+vim docker-compose.yml
+"i"
+	version: '3'
+	services:
+		Ngnix:
+			build: 
+				context:"{path donde esté el dockerfile}"
+				dockerfile: Dockerfile
+			container_name: nginxprueba
+			ports:"80:80"
+			restart: always
+		MySQL:
+			image: mysql:latest
+			container_name: mysqlprueba
+			ports:"3306:3306"
+"Esc"
+:wq
+
+
+3)
+
+¿Cómo hago para ejecutarlo si no tiene el mismo nombre?
+docker-compose -f "{nombre} up -d
+
+
+¿Cómo hago para stopearlo?
+docker-compose -f {nombre} down
