@@ -1,12 +1,14 @@
-# Prácticas
+# Practicas: Arquitecturas y Sistemas Operativos
 
-Ejercicios de Arquitecturas y sistemas operativos, una práctica por fecha.
+Practices for the subject "Arquitecturas y Sistemas Operativos"
 
 
-## Grupo 2:
+### Group Members
 
 - Julian Vazquez
+
 - Lucio Gallucci
+
 - Matias Napolitano
-- Melisa Gomez
+
 - Santiago Feresin
